@@ -1,32 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lucky Duck</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background: #fdf6e3;
+      background: #f0f8ff; /* light sky blue */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      max-width: 480px;
+      width: 90%;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
       text-align: center;
-      padding: 40px;
     }
-    .box {
-      max-width: 520px;
-      margin: auto;
-      background: white;
-      padding: 28px;
-      border-radius: 18px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    h1 {
+      font-size: 2em;
+      margin-bottom: 15px;
     }
-    h1 { margin-top: 0; }
+    p {
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+    img {
+      max-width: 150px;
+      width: 40%;
+      height: auto;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
-  <div class="box">
-   <h1>🦆 You found a duck!</h1>
-<p>This tiny duck was hidden to make your day a little better.</p>
-<p>Keep it, or re-hide it. 🙂</p>
+  <div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Yellow_duck.png" alt="Cartoon Duck">
+    <h1>🦆 You found a duck!</h1>
+    <p>This tiny duck was hidden to make your day a little better.</p>
+    <p>Keep it, or re-hide it. 🙂</p>
   </div>
 </body>
 </html>
