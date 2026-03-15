@@ -7,42 +7,85 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 16px;
       font-family: Arial, sans-serif;
-      background: #f0f8ff; /* light sky blue */
+      background: #eaf6ff;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      box-sizing: border-box;
     }
+
     .container {
-      background: #fff;
-      max-width: 480px;
-      width: 90%;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      border-radius: 24px;
+      padding: 28px 22px;
       text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     }
+
+    .duck-wrap {
+      margin-bottom: 18px;
+    }
+
+    .duck {
+      width: 140px;
+      max-width: 50%;
+      height: auto;
+    }
+
     h1 {
-      font-size: 2em;
-      margin-bottom: 15px;
+      font-size: 1.9rem;
+      margin: 0 0 14px 0;
+      line-height: 1.2;
+      color: #222;
     }
+
     p {
-      font-size: 1.1em;
+      font-size: 1.08rem;
+      line-height: 1.5;
+      color: #444;
       margin: 10px 0;
     }
-    img {
-      max-width: 150px;
-      width: 40%;
-      height: auto;
-      margin-bottom: 20px;
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 24px 18px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .duck {
+        width: 120px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="https://i.ibb.co/3r2XrZH/yellow-duck.png" alt="Cute Yellow Duck">
+    <div class="duck-wrap">
+      <svg class="duck" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Cartoon duck" role="img">
+        <ellipse cx="95" cy="115" rx="55" ry="42" fill="#FFD84D"/>
+        <circle cx="132" cy="78" r="32" fill="#FFD84D"/>
+        <ellipse cx="156" cy="87" rx="20" ry="12" fill="#FF9F43"/>
+        <circle cx="142" cy="72" r="4.5" fill="#222"/>
+        <path d="M114 52 Q126 28 146 45" fill="#FFD84D"/>
+        <ellipse cx="72" cy="150" rx="8" ry="16" fill="#FF9F43" transform="rotate(12 72 150)"/>
+        <ellipse cx="104" cy="152" rx="8" ry="16" fill="#FF9F43" transform="rotate(-8 104 152)"/>
+        <path d="M48 107 Q30 96 42 78 Q52 82 60 96" fill="#FFE680"/>
+      </svg>
+    </div>
+
     <h1>🦆 You found a duck!</h1>
     <p>This tiny duck was hidden to make your day a little better.</p>
     <p>Keep it, or re-hide it. 🙂</p>
