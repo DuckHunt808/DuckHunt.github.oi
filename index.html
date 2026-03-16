@@ -1,51 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Lucky Duck</title>
-<style>
-  body { margin:0; padding:16px; font-family:Arial,sans-serif; background:#eaf6ff; display:flex; justify-content:center; align-items:center; min-height:100vh; }
-  .container { width:100%; max-width:430px; background:white; border-radius:24px; padding:28px 22px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,0.15); }
-  .count { font-size:4.2rem; font-weight:bold; margin:12px 0 22px 0; color:#111; }
-  button { font-size:1.1rem; padding:14px 20px; border:none; border-radius:14px; background:#ffd84d; cursor:pointer; width:100%; max-width:260px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucky Duck</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: Arial, sans-serif;
+      background: #eaf6ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      border-radius: 24px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .duck-wrap {
+      margin-bottom: 18px;
+    }
+
+    .duck {
+      width: 140px;
+      max-width: 50%;
+      height: auto;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin: 0 0 14px 0;
+      line-height: 1.2;
+      color: #222;
+    }
+
+    p {
+      font-size: 1.08rem;
+      line-height: 1.5;
+      color: #444;
+      margin: 10px 0;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 24px 18px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .duck {
+        width: 120px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <h1>🦆 You found a duck!</h1>
-  <div>Ducks discovered</div>
-  <div class="count" id="count">...</div>
-  <button id="duckButton">I found a duck</button>
-</div>
+  <div class="container">
+    <div class="duck-wrap">
+      <svg class="duck" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Cartoon duck" role="img">
+        <ellipse cx="95" cy="115" rx="55" ry="42" fill="#FFD84D"/>
+        <circle cx="132" cy="78" r="32" fill="#FFD84D"/>
+        <ellipse cx="156" cy="87" rx="20" ry="12" fill="#FF9F43"/>
+        <circle cx="142" cy="72" r="4.5" fill="#222"/>
+        <path d="M114 52 Q126 28 146 45" fill="#FFD84D"/>
+        <ellipse cx="72" cy="150" rx="8" ry="16" fill="#FF9F43" transform="rotate(12 72 150)"/>
+        <ellipse cx="104" cy="152" rx="8" ry="16" fill="#FF9F43" transform="rotate(-8 104 152)"/>
+        <path d="M48 107 Q30 96 42 78 Q52 82 60 96" fill="#FFE680"/>
+      </svg>
+    </div>
 
-<script>
-const namespace = "lucky_duck_site1";
-const key = "ducks_found";
-const countEl = document.getElementById("count");
-const button = document.getElementById("duckButton");
-
-// Load current counter
-fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
-  .then(res => res.json())
-  .then(data => {
-    countEl.textContent = data.value ?? 0;
-  })
-  .catch(() => { countEl.textContent = "?"; });
-
-// Increase counter on click
-button.addEventListener("click", () => {
-  button.disabled = true;
-  fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-    .then(res => res.json())
-    .then(data => {
-      countEl.textContent = data.value;
-    })
-    .catch(() => {
-      countEl.textContent = "?";
-    });
-});
-</script>
-
+    <h1>🦆 You found a duck!</h1>
+    <p>This tiny duck was hidden to make your day a little better.</p>
+    <p>Keep it, or re-hide it. 🙂</p>
+  </div>
 </body>
 </html>
