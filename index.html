@@ -7,7 +7,7 @@
 <style>
   body {
     margin: 0;
-    padding: 40px;
+    padding: 20px;
     font-family: Arial, sans-serif;
     background: #eaf6ff;
     display: flex;
@@ -20,20 +20,21 @@
   .container {
     text-align: center;
     background: white;
-    padding: 28px 22px;
+    padding: 24px 18px;
     border-radius: 24px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    max-width: 400px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    max-width: 90%;
+    width: 360px;
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin: 12px 0;
   }
 
   .subtitle {
     font-size: 1rem;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
   }
 
   button {
@@ -71,9 +72,16 @@
 
   /* Duck SVG size */
   #duckSVG {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     margin-bottom: 16px;
+  }
+
+  /* Mobile responsive tweaks */
+  @media (max-width: 400px) {
+    h1 { font-size: 1.4rem; }
+    .subtitle { font-size: 0.95rem; }
+    #duckSVG { width: 90px; height: 90px; }
   }
 </style>
 </head>
@@ -98,7 +106,7 @@
     <path d="M48 107 Q30 96 42 78 Q52 82 60 96" fill="#FFE680"/>
   </svg>
 
-  <h1>🦆 You found a duck!</h1>
+  <h1>You found a duck!</h1>
   <p class="subtitle">This tiny duck was hidden to make your day a little better.</p>
   <p class="subtitle">Keep it, or re-hide it. 🙂</p>
 
@@ -118,7 +126,7 @@ button.addEventListener('click', () => {
   quack.play();
 
   // Pop animation
-  button.classList.remove('pop'); // reset animation
+  button.classList.remove('pop'); // reset
   void button.offsetWidth;        // trigger reflow
   button.classList.add('pop');
 
