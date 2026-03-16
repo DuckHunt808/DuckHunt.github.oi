@@ -77,13 +77,11 @@
   <p class="subtitle">This tiny duck was hidden to make your day a little better.</p>
   <p class="subtitle">Keep it, or re-hide it. 🙂</p>
 
-  <button id="duckButton">Count Duck</button>
+  <button id="duckButton">Duck Count</button>
 </div>
 
-<!-- Tiny quack sound embedded in base64 -->
-<audio id="quackSound">
-  <source src="data:audio/wav;base64,UklGRuQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YcQAAAAA" type="audio/wav">
-</audio>
+<!-- Reference your uploaded quack.mp3 here -->
+<audio id="quackSound" src="quack.mp3"></audio>
 
 <script>
 const button = document.getElementById('duckButton');
