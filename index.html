@@ -9,90 +9,78 @@
     margin: 0;
     padding: 40px;
     font-family: Arial, sans-serif;
-    text-align: center;
     background: #eaf6ff;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     min-height: 100vh;
   }
 
+  .container {
+    text-align: center;
+    background: white;
+    padding: 28px 22px;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    max-width: 400px;
+  }
+
   h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  #duckButton {
-    font-size: 1.3rem;
-    font-weight: bold;
-    padding: 16px 28px;
-    border: none;
-    border-radius: 16px;
-    background: #ffd84d;
-    color: #222;
-    cursor: pointer;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: 20px;
-  }
-
-  #duckButton:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  }
-
-  #duckButton:active {
-    transform: scale(0.95);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-
-  /* Wing flap animation */
-  .wing {
-    transform-origin: top center;
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .flap {
-    transform: rotate(-30deg);
+    font-size: 1.8rem;
+    margin-bottom: 12px;
   }
 
   .subtitle {
-    margin-top: 16px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #555;
+    margin-bottom: 22px;
+  }
+
+  button {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 14px;
+    background: #ffd84d;
+    color: #222;
+    cursor: pointer;
+    width: 100%;
+    max-width: 260px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  button:hover {
+    transform: scale(1.03);
+  }
+
+  button:active {
+    transform: scale(0.97);
+  }
+
+  .pop {
+    animation: pop 0.28s ease;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+    100% { transform: scale(1); }
   }
 </style>
 </head>
 <body>
 
-<h1>🦆 You found a duck!</h1>
+<div class="container">
+  <h1>🦆 You found a duck!</h1>
+  <p class="subtitle">This tiny duck was hidden to make your day a little better.</p>
+  <p class="subtitle">Keep it, or re-hide it. 🙂</p>
 
-<!-- SVG cartoon duck -->
-<svg id="duck" width="150" height="150" viewBox="0 0 200 200">
-  <!-- Body -->
-  <ellipse cx="95" cy="115" rx="55" ry="42" fill="#FFD84D"/>
-  <!-- Head -->
-  <circle cx="132" cy="78" r="32" fill="#FFD84D"/>
-  <!-- Beak -->
-  <ellipse cx="156" cy="87" rx="20" ry="12" fill="#FF9F43"/>
-  <!-- Eye -->
-  <circle cx="142" cy="72" r="4.5" fill="#222"/>
-  <!-- Wings (grouped for animation) -->
-  <g id="leftWing" class="wing">
-    <ellipse cx="72" cy="150" rx="8" ry="16" fill="#FF9F43" transform="rotate(12 72 150)"/>
-  </g>
-  <g id="rightWing" class="wing">
-    <ellipse cx="104" cy="152" rx="8" ry="16" fill="#FF9F43" transform="rotate(-8 104 152)"/>
-  </g>
-  <!-- Tail -->
-  <path d="M48 107 Q30 96 42 78 Q52 82 60 96" fill="#FFE680"/>
-</svg>
+  <button id="duckButton">Duck Count</button>
+</div>
 
-<button id="duckButton">I found a duck</button>
-<div class="subtitle">Keep it, or re-hide it 🙂</div>
-
-<!-- Small quack sound -->
+<!-- Tiny quack sound embedded in base64 -->
 <audio id="quackSound">
   <source src="data:audio/wav;base64,UklGRuQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YcQAAAAA" type="audio/wav">
 </audio>
@@ -100,26 +88,19 @@
 <script>
 const button = document.getElementById('duckButton');
 const quack = document.getElementById('quackSound');
-const leftWing = document.getElementById('leftWing');
-const rightWing = document.getElementById('rightWing');
 
 button.addEventListener('click', () => {
   // Play quack sound
   quack.currentTime = 0;
   quack.play();
 
-  // Flap wings
-  leftWing.classList.add('flap');
-  rightWing.classList.add('flap');
+  // Pop animation
+  button.classList.remove('pop'); // reset animation
+  void button.offsetWidth;        // trigger reflow
+  button.classList.add('pop');
 
-  setTimeout(() => {
-    leftWing.classList.remove('flap');
-    rightWing.classList.remove('flap');
-  }, 200);
-
-  // Pop animation on button
-  button.style.transform = 'scale(1.1)';
-  setTimeout(() => { button.style.transform = ''; }, 200);
+  // Change text
+  button.textContent = "Duck counted!";
 });
 </script>
 
